@@ -2,16 +2,22 @@ import "./Tetris.css";
 
 import Board from "../../components/Board/Board";
 import GameStats from "../../components/GameStats/GameStats";
-import Previews from "../../components/GameStats/Previews";
+import Previews from "../../components/Previews/Previews";
 
 import { useBoard } from "../../hooks/useBoard";
 import { useGameStats } from "../../hooks/useGameStats";
+import { usePlayer } from "../../hooks/usePlayer";
 
 const Tetris = ({ rows, columns, setGameOver }) => {
   const [gameStats, addLinesCleared] = useGameStats();
-  const [board, setBoard] = useBoard({ rows, columns });
-
-  const player = { tetrominoes: [] }
+  const [player, setPlayer, resetPlayer] = usePlayer();
+  const [board, setBoard] = useBoard({
+    rows,
+    columns,
+    player,
+    resetPlayer,
+    addLinesCleared,
+  });
 
   return (
     <div className="Tetris">
