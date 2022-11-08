@@ -1,4 +1,5 @@
 import "./Board.css";
+
 import BoardCell from "../BoardCell/BoardCell";
 
 const Board = ({ board }) => {
